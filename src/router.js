@@ -3,28 +3,41 @@ import Router from 'vue-router'
 import firebase from 'firebase'
 
 import Auth from '@/views/Auth.vue'
+import Dashboard from '@/views/Dashboard.vue'
 import Home from '@/views/Home.vue'
 import Tasks from '@/views/Tasks.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
+      path: '*',
+      redirect: '/dashboard'
+    },
+    {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: Home
     },
     {
       path: '/auth',
-      name: 'auth',
+      name: 'Auth',
       component: Auth
     },
     {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/tasks',
-      name: 'tasks',
+      name: 'Tasks',
       component: Tasks,
       meta: {
         requiresAuth: true
@@ -37,7 +50,7 @@ router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
   const currentUser = firebase.auth().currentUser
 
-  if (requireAuth && !currentUser) {
+  if (requiresAuth && !currentUser) {
     next('/auth')
   } else if (requiresAuth && currentUser) {
     next()
@@ -45,3 +58,5 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
+
+export default router

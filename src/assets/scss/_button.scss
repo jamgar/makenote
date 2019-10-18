@@ -1,0 +1,21 @@
+.btn {
+  &,
+  &:link,
+  &:visited {
+    background-color: $color-dark-blue;
+    border-radius: 3px;
+    color: $color-light-grey;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    margin: 1rem 0;
+    transition: all 0.3s;
+  }
+  &:hover {
+    background-color: lighten($color-dark-blue, 15%);
+    box-shadow: 0 0.5rem 1rem rgba(black, 0.2);
+  }
+}

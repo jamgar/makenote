@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap');
+// variables
+$color-dark-grey: #17223b;
+$color-light-grey: #dee1ec;
+
+$color-light-blue: #becbff;
+$color-dark-blue: #0d0cb5;
+
+// global
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  font-size: 62.5%; // 1rem = 10px
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+}
+body {
+  background-color: $color-light-grey;
+  box-sizing: border-box;
+  color: $color-dark-grey;
+  line-height: 1.5;
+}
+section {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// typography
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0 0 0.5rem;
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.8rem;
+}
+h3 {
+  font-size: 1.6rem;
+}
+h4 {
+  font-size: 1.4rem;
+}
+h5 {
+  font-size: 1.2rem;
+}
+p {
+  line-height: 1.5;
+}
+a {
+  text-decoration: none;
+  color: $color-dark-blue;
+  margin: 0;
+  cursor: pointer;
+
+  &:hover {
+    color: ligthen($color-dark-blue, 5%);
+  }
+}
+li {
+  list-style: none;
+}
