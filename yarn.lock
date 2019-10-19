@@ -594,6 +594,14 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@ckeditor/ckeditor5-build-classic@^12.4.0":
+  version "12.4.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-build-classic/-/ckeditor5-build-classic-12.4.0.tgz#d5eefb00424d6c559f826d8509ba6ce7e1ce12b9"
+
+"@ckeditor/ckeditor5-vue@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-vue/-/ckeditor5-vue-1.0.0.tgz#f1c22776fa625afa8603b2156406c5673bdb1bce"
+
 "@firebase/app-types@0.4.4":
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.4.4.tgz#6423e9b284018109d3658a6ecf7f82ca0e288bbb"
