@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <ckeditor
-      :editor="editor"
-      v-model="editorData"
-      :config="editorConfig"
-    ></ckeditor>
+  <div id="text-editor">
+    <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
   </div>
 </template>
 
@@ -19,6 +15,8 @@ import ItalicPlugin from '@ckeditor/ckeditor5-basic-styles/src/italic'
 import LinkPlugin from '@ckeditor/ckeditor5-link/src/link'
 import ParagraphPlugin from '@ckeditor/ckeditor5-paragraph/src/paragraph'
 import BlockQuotePlugin from '@ckeditor/ckeditor5-block-quote/src/blockquote'
+import AlignmentPlugin from '@ckeditor/ckeditor5-alignment/src/alignment'
+import FontPlugin from '@ckeditor/ckeditor5-font/src/font'
 
 export default {
   name: 'TextEditor',
@@ -36,6 +34,8 @@ export default {
           HeadingPlugin,
           BoldPlugin,
           ItalicPlugin,
+          AlignmentPlugin,
+          FontPlugin,
           LinkPlugin,
           ParagraphPlugin,
           BlockQuotePlugin
@@ -46,16 +46,26 @@ export default {
             '|',
             'bold',
             'italic',
+            'alignment',
+            '|',
+            'fontFamily',
+            'fontSize',
+            'fontColor',
+            '|',
             'link',
             'undo',
             'redo',
             'blockquote'
           ]
         }
+        // can use numeric for font size
+        // fontSize: {
+        //   options: [9, 11, 13, 'default', 17, 19, 21]
+        // }
       }
     }
   }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>
