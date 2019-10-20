@@ -16,6 +16,7 @@ import BoldPlugin from '@ckeditor/ckeditor5-basic-styles/src/bold'
 import ItalicPlugin from '@ckeditor/ckeditor5-basic-styles/src/italic'
 import LinkPlugin from '@ckeditor/ckeditor5-link/src/link'
 import ParagraphPlugin from '@ckeditor/ckeditor5-paragraph/src/paragraph'
+import BlockQuotePlugin from '@ckeditor/ckeditor5-block-quote/src/blockquote'
 
 export default {
   name: 'TextEditor',
@@ -32,10 +33,11 @@ export default {
           BoldPlugin,
           ItalicPlugin,
           LinkPlugin,
-          ParagraphPlugin
+          ParagraphPlugin,
+          BlockQuotePlugin
         ],
         toolbar: {
-          items: ['bold', 'italic', 'link', 'undo', 'redo']
+          items: ['bold', 'italic', 'link', 'undo', 'redo', 'blockquote']
         }
       }
     }
