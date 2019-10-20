@@ -12,6 +12,8 @@
 import CKEditor from '@ckeditor/ckeditor5-vue'
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor'
 import EssentialsPlugin from '@ckeditor/ckeditor5-essentials/src/essentials'
+import AutoFormatPlugin from '@ckeditor/ckeditor5-autoformat/src/autoformat'
+import HeadingPlugin from '@ckeditor/ckeditor5-heading/src/heading'
 import BoldPlugin from '@ckeditor/ckeditor5-basic-styles/src/bold'
 import ItalicPlugin from '@ckeditor/ckeditor5-basic-styles/src/italic'
 import LinkPlugin from '@ckeditor/ckeditor5-link/src/link'
@@ -30,6 +32,8 @@ export default {
       editorConfig: {
         plugins: [
           EssentialsPlugin,
+          AutoFormatPlugin,
+          HeadingPlugin,
           BoldPlugin,
           ItalicPlugin,
           LinkPlugin,
@@ -37,7 +41,16 @@ export default {
           BlockQuotePlugin
         ],
         toolbar: {
-          items: ['bold', 'italic', 'link', 'undo', 'redo', 'blockquote']
+          items: [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            'link',
+            'undo',
+            'redo',
+            'blockquote'
+          ]
         }
       }
     }
