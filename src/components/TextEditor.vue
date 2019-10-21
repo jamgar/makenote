@@ -80,4 +80,10 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+#text-editor {
+  p {
+    font-size: 1.6rem;
+  }
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>Dashboard</h3>
-    <TextEditor id="myeditor" />
+    <TextEditor />
   </div>
 </template>
 
