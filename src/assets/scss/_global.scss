@@ -7,13 +7,13 @@ $color-light-blue: #becbff;
 $color-dark-blue: #0d0cb5;
 
 // global
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
+// *,
+// *::after,
+// *::before {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: inherit;
+// }
 html {
   font-size: 62.5%; // 1rem = 10px
   font-family: 'Lato', Helvetica, Arial, sans-serif;
@@ -40,7 +40,7 @@ p {
   margin: 0 0 0.5rem;
 }
 h1 {
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 h2 {
   font-size: 1.8rem;
@@ -55,6 +55,7 @@ h5 {
   font-size: 1.2rem;
 }
 p {
+  font-size: 1.6rem;
   line-height: 1.5;
 }
 a {
@@ -66,7 +67,4 @@ a {
   &:hover {
     color: ligthen($color-dark-blue, 5%);
   }
-}
-li {
-  list-style: none;
 }

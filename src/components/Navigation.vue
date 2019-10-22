@@ -56,6 +56,7 @@ header {
     // text-align: right;
 
     li {
+      list-style: none;
       margin-top: 4px;
       margin-left: 0.6rem;
 

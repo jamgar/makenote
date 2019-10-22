@@ -50,7 +50,7 @@ export default {
   align-items: center;
   margin-bottom: 0.5rem;
   background-color: #ffffff;
-  width: 100%;
+  // width: 100%;
   padding: 0.5rem 2rem;
   border-radius: 2px;
 }

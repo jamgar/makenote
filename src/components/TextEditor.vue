@@ -23,6 +23,10 @@ import AlignmentPlugin from '@ckeditor/ckeditor5-alignment/src/alignment'
 import FontPlugin from '@ckeditor/ckeditor5-font/src/font'
 import TablePlugin from '@ckeditor/ckeditor5-table/src/table'
 import TableToolBar from '@ckeditor/ckeditor5-table/src/tabletoolbar'
+import TodoList from '@ckeditor/ckeditor5-list/src/todolist'
+import ListPlugin from '@ckeditor/ckeditor5-list/src/list'
+import IndentPlugin from '@ckeditor/ckeditor5-indent/src/indent'
+import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock'
 
 export default {
   name: 'TextEditor',
@@ -46,7 +50,11 @@ export default {
           ParagraphPlugin,
           BlockQuotePlugin,
           TablePlugin,
-          TableToolBar
+          TableToolBar,
+          ListPlugin,
+          TodoList,
+          IndentPlugin,
+          IndentBlock
         ],
         toolbar: {
           items: [
@@ -59,6 +67,13 @@ export default {
             'fontFamily',
             'fontSize',
             'fontColor',
+            '|',
+            'outdent',
+            'indent',
+            '|',
+            'bulletedList',
+            'numberedList',
+            'todoList',
             '|',
             'link',
             'undo',
@@ -80,10 +95,19 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #text-editor {
-  p {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
+  // margin: 0 10px;
+
+  &ck-editor__main {
+    padding: 10px;
   }
+}
+ul li {
+  list-style-type: disc;
+}
+ol li {
+  list-style-type: decimal;
 }
 </style>

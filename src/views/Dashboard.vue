@@ -1,17 +1,20 @@
 <template>
   <div>
     <h3>Dashboard</h3>
-    <TextEditor />
+    <Notes />
+    <Tasks />
   </div>
 </template>
 
 <script>
-import TextEditor from '@/components/TextEditor.vue'
+import Notes from '@/views/Notes.vue'
+import Tasks from '@/views/Tasks.vue'
 
 export default {
   name: 'Dashboard',
   components: {
-    TextEditor
+    Notes,
+    Tasks
   }
 }
 </script>
