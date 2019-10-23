@@ -48,22 +48,23 @@ header {
 
   h3 {
     display: inline-block;
-    padding: 0.5rem;
+    margin: 0;
   }
   ul {
     display: flex;
     float: right;
-    // text-align: right;
+    margin: 0;
 
     li {
       list-style: none;
-      margin-top: 4px;
+      display: inline-block;
+      // margin-top: 4px;
       margin-left: 0.6rem;
 
       a {
         display: block;
-        font-size: 1.2rem;
-        padding: 0.5rem;
+        font-size: 1.5rem;
+        padding-left: 0.5rem;
       }
     }
   }

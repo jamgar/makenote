@@ -95,14 +95,18 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #text-editor {
   font-size: 1.6rem;
-  // margin: 0 10px;
-
-  &ck-editor__main {
-    padding: 10px;
-  }
+}
+.ck-content {
+  height: 80vh;
+}
+.ck.ck-toolbar {
+  border: none;
+}
+.ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
+  border-color: white;
 }
 ul li {
   list-style-type: disc;

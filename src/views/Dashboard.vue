@@ -1,8 +1,9 @@
 <template>
   <div>
-    <h3>Dashboard</h3>
-    <Notes />
-    <Tasks />
+    <div class="dashboard__container">
+      <Notes class="notes" />
+      <Tasks class="tasks" />
+    </div>
   </div>
 </template>
 
@@ -19,4 +20,15 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.dashboard__container {
+  display: flex;
+  width: 100%;
+}
+.notes {
+  min-width: 75%;
+}
+.tasks {
+  min-width: 25%;
+}
+</style>

@@ -51,7 +51,7 @@ export default {
   methods: {
     addTask() {
       this.$store.dispatch('addTask', this.task.content)
-      this.task = ''
+      this.task.content = ''
     },
     toggleComplete(task) {
       task.completed = !task.completed
@@ -65,9 +65,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#tasks {
-  margin: 1.5rem;
-}
 .task__form {
   display: flex;
   margin-bottom: 1.5rem;
