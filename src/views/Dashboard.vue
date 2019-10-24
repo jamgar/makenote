@@ -29,6 +29,7 @@ export default {
   min-width: 75%;
 }
 .tasks {
+  padding-left: 2px;
   min-width: 25%;
 }
 </style>
