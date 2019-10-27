@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import { store } from './store'
 const fb = require('./firebase.config.js')
 import './assets/scss/app.scss'
 
@@ -17,12 +17,12 @@ fb.auth.onAuthStateChanged(user => {
     }).$mount('#app')
   }
 
-  if (user) {
-    store.commit('setCurrentUser', user)
-    store.dispatch('fetchUserProfile')
+  // if (user) {
+  //   store.commit('setCurrentUser', user)
+  //   store.dispatch('fetchUserProfile')
 
-    fb.usersCollection.doc(user.uid).onSnapshot(doc => {
-      store.commit('setUserProfile', doc.data())
-    })
-  }
+  //   fb.usersCollection.doc(user.uid).onSnapshot(doc => {
+  //     store.commit('setUserProfile', doc.data())
+  //   })
+  // }
 })

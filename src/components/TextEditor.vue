@@ -33,10 +33,10 @@ export default {
   components: {
     ckeditor: CKEditor.component
   },
+  props: ['note'],
   data() {
     return {
       editor: ClassicEditor,
-      editorData: '',
       editorConfig: {
         plugins: [
           EssentialsPlugin,
@@ -89,6 +89,16 @@ export default {
         // fontSize: {
         //   options: [9, 11, 13, 'default', 17, 19, 21]
         // }
+      }
+    }
+  },
+  computed: {
+    editorData: {
+      get() {
+        return this.note.content
+      },
+      set(content) {
+        // will update this.$store.commit(setNoteContent, { content })
       }
     }
   }
