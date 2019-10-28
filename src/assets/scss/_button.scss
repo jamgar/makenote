@@ -18,4 +18,15 @@
     background-color: lighten($color-dark-blue, 15%);
     box-shadow: 0 0.5rem 1rem rgba(black, 0.2);
   }
+
+  &--outline {
+    background-color: #ffffff;
+    border: 1px solid $color-dark-blue;
+    color: $color-dark-blue;
+
+    &:hover {
+      background-color: $color-light-grey;
+      box-shadow: none;
+    }
+  }
 }

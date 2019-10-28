@@ -98,7 +98,7 @@ export default {
         return this.note.content
       },
       set(content) {
-        // will update this.$store.commit(setNoteContent, { content })
+        this.$store.commit('updateNoteContent', { content })
       }
     }
   }

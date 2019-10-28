@@ -1,12 +1,15 @@
 <template>
   <div id="note">
-    <input
-      v-model.trim="note.title"
-      type="title"
-      placeholder="Title"
-      id="title"
-      class="input__textbox input__textbox--note"
-    />
+    <div class="note__header">
+      <input
+        v-model.trim="title"
+        type="title"
+        placeholder="Note Title"
+        id="title"
+        class="input__textbox input__textbox--note"
+      />
+      <button @click="saveNote" class="btn btn--outline note__btn">Save</button>
+    </div>
     <TextEditor :note="note" />
   </div>
 </template>
@@ -18,18 +21,38 @@ export default {
   props: ['note'],
   components: {
     TextEditor
+  },
+  computed: {
+    title: {
+      get() {
+        return this.note.title
+      },
+      set(title) {
+        this.$store.commit('updateNoteTitle', { title })
+      }
+    }
+  },
+  methods: {
+    saveNote() {
+      console.log('note saved')
+    }
   }
 }
 // Save a note
-// Fetch a note
-// Pass note content to TextEditor
 </script>
 
 <style lang="scss" scoped>
 #note {
   width: 100%;
 }
+.note__header {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
 .input__textbox--note {
-  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+.note__btn {
+  margin: 0;
 }
 </style>

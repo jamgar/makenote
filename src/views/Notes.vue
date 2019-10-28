@@ -1,6 +1,5 @@
 <template>
   <div id="notes">
-    <h3>Notes</h3>
     <div class="notes__container">
       <NotesList id="notes-list" />
       <Note id="note-editor" :note="note" />

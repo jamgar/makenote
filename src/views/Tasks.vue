@@ -1,7 +1,5 @@
 <template>
   <div id="tasks">
-    <h3>Tasks</h3>
-
     <form @submit.prevent class="form task__form">
       <input
         v-model.trim="task.content"
@@ -10,7 +8,13 @@
         id="task"
         class="input__textbox task__textbox"
       />
-      <button @click="addTask" class="btn task__btn">Add</button>
+      <button
+        @click="addTask"
+        class="btn btn--outline task__btn"
+        :disabled="task.content === ''"
+      >
+        Add
+      </button>
     </form>
     <div v-if="tasks">
       <div v-for="(task, idx) in tasks" :key="idx">
@@ -74,5 +78,9 @@ export default {
 }
 .task__btn {
   margin: 0;
+  &:disabled {
+    border-color: gray;
+    color: gray;
+  }
 }
 </style>

@@ -24,7 +24,11 @@ export const store = new Vuex.Store({
       { id: 1, title: 'first note', content: 'first note content' },
       { id: 2, title: 'seconnd note', content: 'second note content' }
     ],
-    note: {},
+    note: {
+      id: '',
+      title: '',
+      content: ''
+    },
     tasks: []
   },
   mutations: {
@@ -32,7 +36,11 @@ export const store = new Vuex.Store({
       state.currentUser = null
       state.userProfile = {}
       state.notes = []
-      state.note = {}
+      state.note = {
+        id: '',
+        title: '',
+        content: ''
+      }
       state.tasks = []
     },
     setCurrentUser(state, val) {
@@ -43,6 +51,12 @@ export const store = new Vuex.Store({
     },
     setNote(state, payload) {
       state.note = payload
+    },
+    updateNoteContent(state, content) {
+      state.note = Object.assign({}, state.note, content)
+    },
+    updateNoteTitle(state, title) {
+      state.note = Object.assign({}, state.note, title)
     },
     setTasks(state, payload) {
       state.tasks = payload
