@@ -68,9 +68,11 @@ export default {
   cursor: pointer;
 }
 .inActive {
-  background-color: #fff;
+  border: none;
+  background-color: none;
 }
 .active {
-  background-color: #becbff;
+  border: 2px solid #becbff;
+  background-color: #fff;
 }
 </style>

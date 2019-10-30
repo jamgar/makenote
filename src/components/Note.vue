@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     saveNote() {
-      console.log('note saved')
+      this.$store.dispatch('addNote')
     }
   }
 }

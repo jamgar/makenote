@@ -21,6 +21,9 @@ export default {
   computed: {
     ...mapState(['notes'])
   },
+  created() {
+    this.$store.dispatch('fetchNotes')
+  },
   methods: {
     setActiveNote(note) {
       this.$store.commit('setNote', note)

@@ -20,10 +20,7 @@ export const store = new Vuex.Store({
   state: {
     currentUser: null,
     userProfile: {},
-    notes: [
-      { id: 1, title: 'first note', content: 'first note content' },
-      { id: 2, title: 'seconnd note', content: 'second note content' }
-    ],
+    notes: [],
     note: {
       id: '',
       title: '',
@@ -49,8 +46,14 @@ export const store = new Vuex.Store({
     setUserProfile(state, val) {
       state.userProfile = val
     },
+    setNotes(state, payload) {
+      state.notes = payload
+    },
     setNote(state, payload) {
       state.note = payload
+    },
+    addNote(state, payload) {
+      state.notes.push(payload)
     },
     updateNoteContent(state, content) {
       state.note = Object.assign({}, state.note, content)
@@ -111,6 +114,41 @@ export const store = new Vuex.Store({
         })
         .catch(err => {
           console.log('Tasks Error:', err)
+        })
+    },
+    fetchNotes({ commit, state }) {
+      const notes = []
+      fb.notesCollection
+        .where('userId', '==', state.currentUser.uid)
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            notes.push({
+              id: doc.id,
+              ...doc.data()
+            })
+          })
+          commit('setNotes', notes)
+        })
+        .catch(err => {
+          console.log('Notes Error:', err)
+        })
+    },
+    addNote({ commit, state }) {
+      const note = {
+        createdOn: new Date(),
+        title: state.note.title,
+        content: state.note.content,
+        userId: state.currentUser.uid,
+        completed: false
+      }
+      fb.notesCollection
+        .add(note)
+        .then(ref => {
+          commit('addNote', { id: ref.id, ...note })
+        })
+        .catch(err => {
+          console.log(err)
         })
     },
     addTask({ commit, state }, payload) {

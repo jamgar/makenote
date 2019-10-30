@@ -79,7 +79,7 @@ export default {
 .task__btn {
   margin: 0;
   &:disabled {
-    border-color: gray;
+    border-color: #dee1ec;
     color: gray;
   }
 }
