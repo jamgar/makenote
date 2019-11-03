@@ -71,7 +71,8 @@ export default {
 <style lang="scss" scoped>
 .task__form {
   display: flex;
-  margin-bottom: 1.5rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
 }
 .task__textbox {
   flex-grow: 1;

@@ -26,7 +26,15 @@ export const store = new Vuex.Store({
       title: '',
       content: ''
     },
+    isEditingNote: false,
     tasks: []
+  },
+  getters: {
+    getNote(state) {
+      return id => {
+        return state.notes.find(note => note.id === id)
+      }
+    }
   },
   mutations: {
     resetState(state) {
@@ -38,7 +46,16 @@ export const store = new Vuex.Store({
         title: '',
         content: ''
       }
+      state.isEditingNote = false
       state.tasks = []
+    },
+    resetNote(state) {
+      state.note = {
+        id: '',
+        title: '',
+        content: ''
+      }
+      state.isEditingNote = false
     },
     setCurrentUser(state, val) {
       state.currentUser = val
@@ -55,11 +72,22 @@ export const store = new Vuex.Store({
     addNote(state, payload) {
       state.notes.push(payload)
     },
+    updateNote(state, payload) {
+      const idx = state.notes.findIndex(note => note.id === payload.id)
+      state.notes[idx] = payload
+    },
+    deleteNote(state, payload) {
+      const idx = state.notes.findIndex(note => note.id === payload.id)
+      state.notes.splice(idx, 1)
+    },
     updateNoteContent(state, content) {
       state.note = Object.assign({}, state.note, content)
     },
     updateNoteTitle(state, title) {
       state.note = Object.assign({}, state.note, title)
+    },
+    updateIsEditingNote(state, edit) {
+      state.isEditingNote = edit
     },
     setTasks(state, payload) {
       state.tasks = payload
@@ -139,16 +167,46 @@ export const store = new Vuex.Store({
         createdOn: new Date(),
         title: state.note.title,
         content: state.note.content,
-        userId: state.currentUser.uid,
-        completed: false
+        userId: state.currentUser.uid
       }
       fb.notesCollection
         .add(note)
         .then(ref => {
-          commit('addNote', { id: ref.id, ...note })
+          const newNote = { id: ref.id, ...note }
+          commit('addNote', newNote)
+          commit('setNote', newNote)
         })
         .catch(err => {
           console.log(err)
+        })
+    },
+    updateNote({ commit, state }) {
+      const note = {
+        id: state.note.id,
+        title: state.note.title,
+        content: state.note.content,
+        userId: state.currentUser.uid
+      }
+      fb.notesCollection
+        .doc(note.id)
+        .update(note)
+        .then(ref => {
+          commit('updateNote', note)
+        })
+        .catch(err => {
+          console.log('Error updating note:', err)
+        })
+    },
+    deleteNote({ commit }, payload) {
+      fb.notesCollection
+        .doc(payload.id)
+        .delete()
+        .then(() => {
+          commit('deleteNote', payload)
+          commit('resetNote')
+        })
+        .catch(err => {
+          console.log('Error deleting note', err)
         })
     },
     addTask({ commit, state }, payload) {
@@ -178,7 +236,7 @@ export const store = new Vuex.Store({
           commit('updateTask', payload)
         })
         .catch(err => {
-          console.log('Error updateing task:', err)
+          console.log('Error updating task:', err)
         })
     },
     deleteTask({ commit }, payload) {

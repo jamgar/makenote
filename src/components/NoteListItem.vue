@@ -3,7 +3,7 @@
     <span class="note__title">{{ note.title }}</span>
     <div class="note__actions">
       <span class="icon note__delete">
-        <Trash2Icon @click="deleteNote" size="1.5x"></Trash2Icon>
+        <Trash2Icon @click.stop="deleteNote" size="1.5x"></Trash2Icon>
       </span>
     </div>
   </div>
@@ -18,20 +18,37 @@ export default {
   components: {
     Trash2Icon
   },
-  props: ['note'],
+  props: ['noteId'],
   computed: {
     ...mapState({
       currentNote: state => state.note
     }),
+    isEditingNote: {
+      get() {
+        return this.$store.state.isEditingNote
+      },
+      set() {
+        this.$store.commit('updateIsEditingNote', true)
+      }
+    },
+    note() {
+      return this.isActive
+        ? this.currentNote
+        : this.$store.getters.getNote(this.noteId)
+    },
     classObject() {
       return {
-        active: this.note.id === this.currentNote.id,
-        inActive: this.note.id != this.currentNote.id
+        active: this.isActive, //this.note.id === this.currentNote.id,
+        inActive: !this.isActive //this.note.id != this.currentNote.id
       }
+    },
+    isActive() {
+      return this.noteId === this.currentNote.id
     }
   },
   methods: {
     setActiveNote() {
+      this.isEditingNote = true
       this.$emit('setActiveNote', this.note)
     },
     deleteNote() {
@@ -53,7 +70,7 @@ export default {
   cursor: pointer;
 
   &:hover {
-    background-color: #becbff;
+    background-color: lighten(#becbff, 5%);
   }
 }
 .note__title {
@@ -69,10 +86,10 @@ export default {
 }
 .inActive {
   border: none;
-  background-color: none;
+  background-color: #fff;
 }
 .active {
-  border: 2px solid #becbff;
-  background-color: #fff;
+  background-color: lighten(#becbff, 5%);
+  border-bottom: 2px solid #0d0cb5;
 }
 </style>
